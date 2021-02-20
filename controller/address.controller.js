@@ -1,6 +1,7 @@
 const conn = require("../database/db");
 const querystring = require("querystring");
 
+
 module.exports.GetByProvince = function (req, res) {
   var query = "Select p.id, p._name From province p Order By p._name ASC";
   conn.query(query, function (error, result) {
@@ -46,3 +47,4 @@ module.exports.GetAddress = function (req, res) {
     });
   }
 };
+

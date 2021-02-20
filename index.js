@@ -4,6 +4,14 @@ var port = 8080;
 var userRoute = require('../server/routes/user.route');
 var addressRoute = require('../server/routes/address.route');
 var typeRoute = require('../server/routes/type.route');
+var postRoute = require('../server/routes/post.route');
+var buyRoute = require('../server/routes/buy.route');
+
+const upload = require('./multer');
+const cloundinary = require('./cloundinary');
+const fs = require('fs');
+
+
 app.listen(port, function() {
     console.log("server is opened At " + port );
 });
@@ -19,4 +27,36 @@ app.use('/api/address', addressRoute);
 
 app.use('/api/type', typeRoute);
 
+app.use('/api/post', postRoute);
+
+app.use('/api/buy', buyRoute);
+
+app.use('/upload-images', upload.array('image'), async (req, res) => {
+  const uploader = async (path) => await cloundinary.uploads(path, 'Images');
+
+  
+  if (req.method === 'POST')
+  {
+    const urls = []
+
+    const files = req.files
+
+    for (const file of files) {
+      const { path } = file
+      const newPath = await uploader(path)
+      urls.push(newPath)
+
+      fs.unlinkSync(path)
+    }
+    
+    res.status(200).json({
+      message:'Upload thành công',
+      data: urls
+    })
+  } else {
+    res.status(405).json({
+      err:'Upload không thành công'
+    })
+  }
+})
 
