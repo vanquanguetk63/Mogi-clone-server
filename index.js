@@ -6,11 +6,12 @@ var addressRoute = require('../server/routes/address.route');
 var typeRoute = require('../server/routes/type.route');
 var postRoute = require('../server/routes/post.route');
 var buyRoute = require('../server/routes/buy.route');
+var houseRoute = require('../server/routes/house.route');
+var rentRoute = require('../server/routes/rent.route');
 
 const upload = require('./multer');
 const cloundinary = require('./cloundinary');
 const fs = require('fs');
-
 
 app.listen(port, function() {
     console.log("server is opened At " + port );
@@ -31,10 +32,13 @@ app.use('/api/post', postRoute);
 
 app.use('/api/buy', buyRoute);
 
+app.use('/api/house', houseRoute);
+
+app.use('/api/rent', rentRoute);
+
 app.use('/upload-images', upload.array('image'), async (req, res) => {
   const uploader = async (path) => await cloundinary.uploads(path, 'Images');
 
-  
   if (req.method === 'POST')
   {
     const urls = []

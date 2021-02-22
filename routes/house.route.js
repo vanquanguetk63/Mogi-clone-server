@@ -1,12 +1,12 @@
 var express = require("express");
 var router = express.Router();
-var controller = require('../controller/buy.controller');
+var controller = require('../controller/house.controller');
 var bodyParser = require("body-parser");
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: true });
 
-router.get('', controller.GetToBuy);
+router.get('/:id', controller.GetHouseByID);
 
-router.post('/image', jsonParser, controller.GetImageById);
+router.get('/image/:id', controller.GetImageById);
 
 module.exports = router;
