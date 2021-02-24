@@ -8,6 +8,8 @@ var postRoute = require('../server/routes/post.route');
 var buyRoute = require('../server/routes/buy.route');
 var houseRoute = require('../server/routes/house.route');
 var rentRoute = require('../server/routes/rent.route');
+var searchRoute = require('../server/routes/search.route');
+
 
 const upload = require('./multer');
 const cloundinary = require('./cloundinary');
@@ -35,6 +37,9 @@ app.use('/api/buy', buyRoute);
 app.use('/api/house', houseRoute);
 
 app.use('/api/rent', rentRoute);
+
+app.use('/api/search', searchRoute);
+
 
 app.use('/upload-images', upload.array('image'), async (req, res) => {
   const uploader = async (path) => await cloundinary.uploads(path, 'Images');

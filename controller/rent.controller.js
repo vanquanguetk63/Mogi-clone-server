@@ -19,3 +19,12 @@ module.exports.GetImageById = function (req, res) {
   });
 }
 
+module.exports.GetToRentLimit = function (req, res) {
+  let number = req.params.number;
+  let query = 'Select * from post where idPurpose = 2 Order By idPost desc limit ' + number;
+  conn.query(query, function (error, result) {
+    if (error) res.send.status(404);
+    res.status(200).send(result);
+  });
+};
+

@@ -48,6 +48,8 @@ module.exports.PostToServer = function (req, res) {
     "," +
     "current_date())";
 
+  // console.log(query);
+
   conn.query(query, function (error, result) {
     if (error) res.send.status(404);
     res.status(200).send(result);
@@ -64,6 +66,9 @@ module.exports.PostImg = function (req, res) {
       query += `('` + data.img[i].url + `',` + data.idPost * 1 + "),";
     }
   }
+
+  // console.log(query);
+  // res.send('img');
   conn.query(query, function (error, result) {
     if (error) res.send.status(404);
     res.status(200).send(result);

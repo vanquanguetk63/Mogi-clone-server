@@ -34,7 +34,7 @@ module.exports.SignUp = function (req, res) {
 
 module.exports.Login = function(req, res) {
   let data = req.body.data;
-  var query = 'Select * from user where ' +
+  var query = 'Select phoneUser, nameUser, CreateAt from user where ' +
   "phoneUser='" + data.phoneNumber + "' AND " +
   "passwordUser='" + data.password + "'";
   conn.query(query, function(error, results){
