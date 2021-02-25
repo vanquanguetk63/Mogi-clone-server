@@ -9,6 +9,7 @@ var buyRoute = require('../server/routes/buy.route');
 var houseRoute = require('../server/routes/house.route');
 var rentRoute = require('../server/routes/rent.route');
 var searchRoute = require('../server/routes/search.route');
+var adminRoute = require('../server/routes/admin.route');
 
 
 const upload = require('./multer');
@@ -39,6 +40,8 @@ app.use('/api/house', houseRoute);
 app.use('/api/rent', rentRoute);
 
 app.use('/api/search', searchRoute);
+
+app.use('/api/admin', adminRoute);
 
 
 app.use('/upload-images', upload.array('image'), async (req, res) => {

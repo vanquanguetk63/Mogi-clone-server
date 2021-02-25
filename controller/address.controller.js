@@ -3,7 +3,7 @@ const querystring = require("querystring");
 
 
 module.exports.GetByProvince = function (req, res) {
-  var query = "Select p.id, p._name From province p Order By p._name ASC";
+  var query = "Select p.id, p._name From province p Order By p.id ASC";
   conn.query(query, function (error, result) {
     if (error) res.send.status(404);
     res.status(200).send(result);

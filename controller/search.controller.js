@@ -50,6 +50,7 @@ module.exports.Search = function (req, res) {
     query += ` where idPurpose = ${req.body.data.purpose} `;
   }
    
+  query += ' AND  approval = 1'
 
   conn.query(query, function (error, result) {
     if (error) res.send.status(404);
