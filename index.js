@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var port = 8080;
+// var port = 8080;
 var authRoute = require('../server/routes/auth.route');
 var userRoute = require('../server/routes/user.route');
 var addressRoute = require('../server/routes/address.route');
@@ -16,9 +16,11 @@ const upload = require('./multer');
 const cloundinary = require('./cloundinary');
 const fs = require('fs');
 
-app.listen(port, function() {
-    console.log("server is opened At " + port );
-});
+// app.listen(port, function() {
+//     console.log("server is opened At " + port );
+// });
+app.listen(process.env.PORT || 3000);
+
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
