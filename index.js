@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var port = 8080;
+var authRoute = require('../server/routes/auth.route');
 var userRoute = require('../server/routes/user.route');
 var addressRoute = require('../server/routes/address.route');
 var typeRoute = require('../server/routes/type.route');
@@ -10,7 +11,6 @@ var houseRoute = require('../server/routes/house.route');
 var rentRoute = require('../server/routes/rent.route');
 var searchRoute = require('../server/routes/search.route');
 var adminRoute = require('../server/routes/admin.route');
-
 
 const upload = require('./multer');
 const cloundinary = require('./cloundinary');
@@ -24,6 +24,8 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
+
+app.use('/api/auth', authRoute);
 
 app.use('/api/user', userRoute);
 

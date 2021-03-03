@@ -92,7 +92,7 @@ module.exports.GetFavorite = function (req, res) {
   var query = `Select * 
   from mogi.post
   inner join favorite on post.idUser = favorite.idUser
-  where post.idPost = favorite.idPost AND favorite.idUser = ${req.body.data.id}
+  where  favorite.idUser = ${req.body.data.id}
   `;
   conn.query(query, function (error, results) {
     if (error) throw error;
