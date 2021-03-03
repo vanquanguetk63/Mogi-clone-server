@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 // var port = 8080;
-var authRoute = require('../server/routes/auth.route');
+// var authRoute = require('../server/routes/auth.route');
 var userRoute = require('../server/routes/user.route');
 var addressRoute = require('../server/routes/address.route');
 var typeRoute = require('../server/routes/type.route');
@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
     next();
   });
 
-app.use('/api/auth', authRoute);
+// app.use('/api/auth', authRoute);
 
 app.use('/api/user', userRoute);
 
