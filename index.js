@@ -48,7 +48,7 @@ app.use(function(req, res, next) {
 app.use('/api/test', (req,res) => {
   res.send({
     success: true
-  } }
+  })
 });
 
 
