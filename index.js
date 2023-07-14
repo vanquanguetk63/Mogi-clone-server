@@ -10,7 +10,7 @@ var app = express();
 // var houseRoute = require('../server/routes/house.route');
 // var rentRoute = require('../server/routes/rent.route');
 // var searchRoute = require('../server/routes/search.route');
-var adminRoute = require('../server/routes/admin.route');
+// var adminRoute = require('../server/routes/admin.route');
 
 // const upload = require('./multer');
 // const cloundinary = require('./cloundinary');
